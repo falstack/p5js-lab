@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import editor from './components/editor.vue'
-const code = `
-let ball = {};
+const code = `let ball = {};
 let soundFile;
 
 this.preload = function() {
@@ -35,8 +34,8 @@ const convertMagicConst = (code: string) => {
   const { clientWidth, clientHeight } = parent as HTMLElement
 
   return code
-    .replace(/SKETCH_WIDTH/g, clientWidth)
-    .replace(/SKETCH_HEIGHT/g, clientHeight)
+    .replace(/SKETCH_WIDTH/g, `${clientWidth}`)
+    .replace(/SKETCH_HEIGHT/g, `${clientHeight}`)
     .replace(/CDN_PREFIX/g, 'https://activity.hdslb.com/blackboard/static/30d74f09baa91cb7f2ffeaa05399d344')
     .trim()
 }
